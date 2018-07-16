@@ -108,17 +108,17 @@
 
 
 
-  <meta name="description" content="mysql调优 ###Mysql架构，存储引擎以及配置">
+  <meta name="description" content="mysql调优Mysql架构，存储引擎以及配置默认文件位置  linux: /etc/my.cnf  Windows: /my.ini 数据文件格式  InnoDB:   frm:存储表结构   ibd:存储数据和索引  MYISAM:   frm:存储表结构   myd:存储数据   myi:存储索引 字符集设置  字符集编码粒度为:数据库-&amp;gt;表-&amp;gt;列 MYISAM、InnoDB存储">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://yoursite.com/2018/07/16/mysql调优/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="mysql调优 ###Mysql架构，存储引擎以及配置">
+<meta property="og:description" content="mysql调优Mysql架构，存储引擎以及配置默认文件位置  linux: /etc/my.cnf  Windows: /my.ini 数据文件格式  InnoDB:   frm:存储表结构   ibd:存储数据和索引  MYISAM:   frm:存储表结构   myd:存储数据   myi:存储索引 字符集设置  字符集编码粒度为:数据库-&amp;gt;表-&amp;gt;列 MYISAM、InnoDB存储">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-16T14:30:28.376Z">
+<meta property="og:updated_time" content="2018-07-16T15:07:40.457Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="mysql调优 ###Mysql架构，存储引擎以及配置">
+<meta name="twitter:description" content="mysql调优Mysql架构，存储引擎以及配置默认文件位置  linux: /etc/my.cnf  Windows: /my.ini 数据文件格式  InnoDB:   frm:存储表结构   ibd:存储数据和索引  MYISAM:   frm:存储表结构   myd:存储数据   myi:存储索引 字符集设置  字符集编码粒度为:数据库-&amp;gt;表-&amp;gt;列 MYISAM、InnoDB存储">
 
 
 
@@ -322,7 +322,7 @@
                 
               
 
-              <time title="Post created: 2018-07-16 22:28:55 / Updated at: 22:30:28" itemprop="dateCreated datePublished" datetime="2018-07-16T22:28:55+08:00">2018-07-16</time>
+              <time title="Post created: 2018-07-16 22:28:55 / Updated at: 23:07:40" itemprop="dateCreated datePublished" datetime="2018-07-16T22:28:55+08:00">2018-07-16</time>
             
 
             
@@ -360,9 +360,56 @@
       
 
       
-        <hr>
-<h1 id="mysql调优"><a href="#mysql调优" class="headerlink" title="mysql调优"></a>mysql调优</h1><hr>
-<p>###Mysql架构，存储引擎以及配置</p>
+        <h1 id="mysql调优"><a href="#mysql调优" class="headerlink" title="mysql调优"></a>mysql调优</h1><h3 id="Mysql架构，存储引擎以及配置"><a href="#Mysql架构，存储引擎以及配置" class="headerlink" title="Mysql架构，存储引擎以及配置"></a>Mysql架构，存储引擎以及配置</h3><h4 id="默认文件位置"><a href="#默认文件位置" class="headerlink" title="默认文件位置"></a>默认文件位置</h4><p>  linux: /etc/my.cnf<br>  Windows: /my.ini</p>
+<h4 id="数据文件格式"><a href="#数据文件格式" class="headerlink" title="数据文件格式"></a>数据文件格式</h4><p>  InnoDB:<br>   frm:存储表结构<br>   ibd:存储数据和索引<br>  MYISAM:<br>   frm:存储表结构<br>   myd:存储数据<br>   myi:存储索引</p>
+<h4 id="字符集设置"><a href="#字符集设置" class="headerlink" title="字符集设置"></a>字符集设置</h4><p>  字符集编码粒度为:数据库-&gt;表-&gt;列</p>
+<h4 id="MYISAM、InnoDB存储引擎对比"><a href="#MYISAM、InnoDB存储引擎对比" class="headerlink" title="MYISAM、InnoDB存储引擎对比"></a>MYISAM、InnoDB存储引擎对比</h4><table>
+<thead>
+<tr>
+<th style="text-align:right">对比点</th>
+<th style="text-align:center">MYISAM</th>
+<th style="text-align:center">InnoDB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">事务</td>
+<td style="text-align:center">不支持</td>
+<td style="text-align:center">支持</td>
+</tr>
+<tr>
+<td style="text-align:right">所有和添加速度</td>
+<td style="text-align:center">非聚集索引/快</td>
+<td style="text-align:center">聚集索引/慢</td>
+</tr>
+<tr>
+<td style="text-align:right">锁机制</td>
+<td style="text-align:center">表锁</td>
+<td style="text-align:center">行锁</td>
+</tr>
+<tr>
+<td style="text-align:right">缓存</td>
+<td style="text-align:center">缓存索引不缓存数据</td>
+</tr>
+<tr>
+<td style="text-align:right">全文索引</td>
+<td style="text-align:center">支持</td>
+<td style="text-align:center">不支持</td>
+</tr>
+<tr>
+<td style="text-align:right">外键</td>
+<td style="text-align:center">支持</td>
+<td style="text-align:center">不支持</td>
+</tr>
+<tr>
+<td style="text-align:right">关注点</td>
+<td style="text-align:center">性能</td>
+<td style="text-align:center">事务</td>
+</tr>
+</tbody>
+</table>
+<h3 id="数据类型优化-索引"><a href="#数据类型优化-索引" class="headerlink" title="数据类型优化/索引"></a>数据类型优化/索引</h3><h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><p><strong>int(?)</strong>:整数型<br>其中 ？ 代表的是宽度，表示没有到达设定的宽度的时候，用0来补充，需要配合zreofill来使用<br>create table user_info(id int(11) zerofill);<br><strong>varchar</strong>:可变长度的字符串<br>优点：节省空间<br>缺点：在update该字段时，如果数据的长度发生变化，就会去新申请空间，产生额外的工作。对性能有影响。<br>使用场景：<br>1.字符串的最大长度比平均真实值大的比较多。<br>varchar(50)，平均在10个字符，但有个别为40,50个字符。<br>2.更新频率较低的字符串字段。<br>最大存储空间：<br>非空：65533字节<br>可空：65532字节(1个字节表示可为空)<br><strong>char</strong>:固定长度字符串<br>使用场景：<br>1.适合存储比较短的字符串<br>2.存储固定长度或者存储长度比较接近的字符串。<br>例如：手机号，MD5加密的密码<br>3.经常变更的数据，不容易产生碎片<br>4.存储比较短的字符串值，例如 Y/N<br>注意点：如果插入的值末尾有空格，会自动截取掉<br>存储长度：<br>非空:存储255字节<br>可空：存储254字节<br><strong>Text</strong><br>非二进制字符串，变长的(注意不可指定 not null)<br><strong>Blob</strong><br>用于存储二进制数据，大二进制数据<br><strong>Datetime</strong><br>8字节  YYYY-MM-DD HH:MM:ss<br><strong>Timestamp</strong><br>4字节  秒数<br>区别：<br>存储空间<br>Datetime  存储到9999年,查看比较直观<br>Timestamp 存储到2038年</p>
+<h4 id="sql关键字解析执行顺序"><a href="#sql关键字解析执行顺序" class="headerlink" title="sql关键字解析执行顺序"></a>sql关键字解析执行顺序</h4><p>from: 左表和右表的笛卡尔积 ，产生虚拟表v1<br>on： 对v1 进行筛选，根据join-condition过滤， 产生v2<br>join: 如果是left join 就把左表在v2 的结果通过on 过滤，通过右表的外部行过滤，产生v3<br>where: 过滤条件 产生v4<br>GROUP BY ：分组，产生v5<br>Having:  过滤条件，产生 v6<br>Select : load 出指定的列，产生v7<br>Distinct: 排重，产生v8<br>Order by: 排序，产生v9<br>Limit: 取出指定的行，并返回结果</p>
 
       
     </div>
@@ -510,7 +557,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#mysql调优"><span class="nav-number">1.</span> <span class="nav-text">mysql调优</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#mysql调优"><span class="nav-number">1.</span> <span class="nav-text">mysql调优</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Mysql架构，存储引擎以及配置"><span class="nav-number">1.0.1.</span> <span class="nav-text">Mysql架构，存储引擎以及配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#默认文件位置"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">默认文件位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据文件格式"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">数据文件格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符集设置"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">字符集设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MYISAM、InnoDB存储引擎对比"><span class="nav-number">1.0.1.4.</span> <span class="nav-text">MYISAM、InnoDB存储引擎对比</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型优化-索引"><span class="nav-number">1.0.2.</span> <span class="nav-text">数据类型优化/索引</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据类型"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sql关键字解析执行顺序"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">sql关键字解析执行顺序</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
